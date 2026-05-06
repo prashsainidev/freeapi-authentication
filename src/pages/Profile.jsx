@@ -25,6 +25,12 @@ const Profile = () => {
 
       <main className="profile-content">
         <div className="welcome-hero">
+          <img 
+            src={user.avatar?.url || 'https://api.dicebear.com/7.x/avataaars/svg?seed=' + user.username} 
+            alt="Avatar" 
+            className="profile-avatar" 
+            onError={(e) => { e.target.src = 'https://api.dicebear.com/7.x/avataaars/svg?seed=' + user.username; }}
+          />
           <div className="hero-text">
             <h1>Welcome, <span className="logo-accent">{user.username}</span>.</h1>
             <p>Your session is active and secure. Here is your profile overview.</p>
@@ -54,7 +60,14 @@ const Profile = () => {
             </div>
             <div className="detail-info">
               <label>Email Address</label>
-              <p>{user.email}</p>
+              <div className="info-value-group">
+                <p className="value-text">{user.email}</p>
+                {user.isEmailVerified !== undefined && (
+                  <span className={`status-badge ${user.isEmailVerified ? 'verified' : 'unverified'}`}>
+                    {user.isEmailVerified ? '✓ Verified' : '⚠ Unverified'}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
 
@@ -66,7 +79,14 @@ const Profile = () => {
             </div>
             <div className="detail-info">
               <label>Account Role</label>
-              <p style={{ marginTop: '0.4rem' }}><span className="role-badge">{user.role || 'USER'}</span></p>
+              <div className="info-value-group">
+                <span className="role-badge">{user.role || 'USER'}</span>
+                {user.loginType && (
+                  <span className="role-badge outline-badge">
+                    {user.loginType.replace('_', ' ')}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
 

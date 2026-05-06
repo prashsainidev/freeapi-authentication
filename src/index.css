@@ -353,6 +353,19 @@ input:-webkit-autofill {
 .welcome-hero {
   padding: 3rem 0;
   margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-subtle);
+  padding: 4px;
+  background-color: var(--bg-card);
 }
 
 .hero-text h1 {
@@ -371,7 +384,7 @@ input:-webkit-autofill {
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
 
@@ -399,15 +412,22 @@ input:-webkit-autofill {
   letter-spacing: 0.05em;
   color: var(--text-muted);
   display: block;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
   font-weight: 500;
 }
 
-.detail-info p {
+.detail-info p, .value-text {
   font-size: 1.1rem;
   color: var(--text-main);
   font-weight: 400;
-  word-break: break-all;
+  word-break: break-word;
+}
+
+.info-value-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
 }
 
 .role-badge {
@@ -418,6 +438,33 @@ input:-webkit-autofill {
   border-radius: 4px;
   font-size: 0.8rem !important;
   font-weight: 500 !important;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.2rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+}
+
+.status-badge.verified {
+  background: rgba(78, 154, 112, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(78, 154, 112, 0.2);
+}
+
+.status-badge.unverified {
+  background: rgba(224, 82, 82, 0.1);
+  color: var(--danger);
+  border: 1px solid rgba(224, 82, 82, 0.2);
+}
+
+.outline-badge {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
 }
 
 /* Responsiveness */
@@ -435,6 +482,12 @@ input:-webkit-autofill {
   }
 }
 
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 480px) {
   .auth-container {
     padding: 1rem;
@@ -447,5 +500,15 @@ input:-webkit-autofill {
   }
   .detail-card {
     padding: 1.5rem;
+  }
+  .welcome-hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
+  .profile-avatar {
+    width: 90px;
+    height: 90px;
   }
 }
