@@ -26,10 +26,14 @@ const Profile = () => {
       <main className="profile-content">
         <div className="welcome-hero">
           <img 
-            src={user.avatar?.url || 'https://api.dicebear.com/7.x/avataaars/svg?seed=' + user.username} 
+            src={
+              user.avatar?.url && !user.avatar.url.includes('via.placeholder.com') 
+                ? user.avatar.url 
+                : `https://api.dicebear.com/7.x/avataaars/svg?seed=${user.username}`
+            } 
             alt="Avatar" 
             className="profile-avatar" 
-            onError={(e) => { e.target.src = 'https://api.dicebear.com/7.x/avataaars/svg?seed=' + user.username; }}
+            onError={(e) => { e.target.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${user.username}`; }}
           />
           <div className="hero-text">
             <h1>Welcome, <span className="logo-accent">{user.username}</span>.</h1>
