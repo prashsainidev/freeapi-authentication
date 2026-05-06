@@ -17,7 +17,7 @@ const Profile = () => {
       <nav className="profile-nav glass-panel">
         <div className="brand-logo">
           <div className="logo-dot"></div>
-          <span>AURA Dashboard</span>
+          <span>AURA AUTH</span>
         </div>
         <button onClick={handleLogout} className="outline-btn">
           Sign Out

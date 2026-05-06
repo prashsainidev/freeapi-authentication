@@ -51,7 +51,7 @@ const Login = () => {
         <div className="auth-header">
           <div className="brand-logo">
             <div className="logo-dot"></div>
-            <span>AURA</span>
+            <span>AURA AUTH</span>
           </div>
           <h1>Welcome Back</h1>
           <p>Sign in to access your dashboard</p>
@@ -62,7 +62,6 @@ const Login = () => {
 
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="input-group">
-            <label htmlFor="username">Username</label>
             <input
               type="text"
               id="username"
@@ -72,10 +71,10 @@ const Login = () => {
               placeholder="e.g. doejohn"
               required
             />
+            <label htmlFor="username">Username</label>
           </div>
 
           <div className="input-group">
-            <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
@@ -85,6 +84,7 @@ const Login = () => {
               placeholder="test@123"
               required
             />
+            <label htmlFor="password">Password</label>
           </div>
 
           <button type="submit" className="primary-btn" disabled={loading}>

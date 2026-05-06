@@ -41,7 +41,7 @@ const Register = () => {
         <div className="auth-header">
           <div className="brand-logo">
             <div className="logo-dot"></div>
-            <span>AURA</span>
+            <span>AURA AUTH</span>
           </div>
           <h1>Create Account</h1>
           <p>Join the elite developer network</p>
@@ -51,7 +51,6 @@ const Register = () => {
 
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="input-group">
-            <label htmlFor="username">Username</label>
             <input
               type="text"
               id="username"
@@ -62,10 +61,10 @@ const Register = () => {
               required
               minLength="3"
             />
+            <label htmlFor="username">Username</label>
           </div>
 
           <div className="input-group">
-            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
@@ -75,10 +74,10 @@ const Register = () => {
               placeholder="user@domain.com"
               required
             />
+            <label htmlFor="email">Email</label>
           </div>
 
           <div className="input-group">
-            <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
@@ -89,6 +88,7 @@ const Register = () => {
               required
               minLength="6"
             />
+            <label htmlFor="password">Password</label>
           </div>
 
           <button type="submit" className="primary-btn" disabled={loading}>

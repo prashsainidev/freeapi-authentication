@@ -1,4 +1,4 @@
-# AURA Security (Authentication Flow)
+# AURA AUTH (Authentication Flow)
 
 ![Project Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 ![Tech Stack](https://img.shields.io/badge/Tech-React_|_React_Router_|_Context_API-blue?style=for-the-badge)
@@ -7,7 +7,7 @@
 
 That was fine for a beginner. But in 2026, you need to understand the exact lifecycle of a user session. You need to know how to securely store tokens, intercept unauthorized access, and manage global authentication states.
 
-**Welcome to the final chapter, Part 8 of my FreeAPI Mastery Series.** This is **AURA Security**, a complete end-to-end frontend authentication architecture built using the FreeAPI Users endpoint.
+**Welcome to the final chapter, Part 8 of my FreeAPI Mastery Series.** This is **AURA AUTH**, a complete end-to-end frontend authentication architecture built using the FreeAPI Users endpoint.
 
 Here is exactly how I leveled up from fetching public data to managing secure, protected user sessions. Step by step.
 
@@ -33,7 +33,7 @@ In **Part 7 (Mentora)**, I mastered complex client-side caching and pre-fetching
 
 ## The Real Secret: CSS Engineering
 
-Just because it's a security form doesn't mean it has to look like a 90s banking website.
+Just because it's an auth flow doesn't mean it has to look like a 90s banking website.
 
 - **The AURA Aesthetic:** I maintained the premium luxury feel from the previous projects. The login and register cards use deep `backdrop-filter: blur(12px)` glassmorphism over a subtle, animated radial gradient background.
 - **Interactive Feedback:** Forms have dynamic focus rings (`box-shadow` transitions), spinning CSS loaders when the API is communicating, and elegant success/error alert boxes that provide immediate feedback to the user.
