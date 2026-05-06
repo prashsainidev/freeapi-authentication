@@ -26,9 +26,9 @@ export const AuthProvider = ({ children }) => {
     initAuth();
   }, []);
 
-  const login = async (username, password) => {
+  const login = async (identifier, password) => {
     try {
-      const response = await apiLogin(username, password);
+      const response = await apiLogin(identifier, password);
       // Assuming FreeAPI returns the token in response.data.accessToken
       const { user, accessToken } = response.data;
       

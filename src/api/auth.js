@@ -34,16 +34,20 @@ export const registerUser = async (username, email, password) => {
   return data;
 };
 
-export const loginUser = async (username, password) => {
+export const loginUser = async (identifier, password) => {
+  const payload = { password };
+  if (identifier.includes('@')) {
+    payload.email = identifier;
+  } else {
+    payload.username = identifier;
+  }
+
   const response = await fetch(`${API_BASE_URL}/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      username,
-      password,
-    }),
+    body: JSON.stringify(payload),
   });
 
   const data = await response.json();

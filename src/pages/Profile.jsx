@@ -14,10 +14,9 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      <nav className="profile-nav glass-panel">
-        <div className="brand-logo">
-          <div className="logo-dot"></div>
-          <span>AURA AUTH</span>
+      <nav className="profile-nav">
+        <div className="brand-logo" style={{ marginBottom: 0 }}>
+          <span className="logo-accent">AURA</span> AUTH
         </div>
         <button onClick={handleLogout} className="outline-btn">
           Sign Out
@@ -25,33 +24,64 @@ const Profile = () => {
       </nav>
 
       <main className="profile-content">
-        <div className="welcome-banner glass-panel">
-          <h1>Welcome, {user.username}!</h1>
-          <p>Here are your authenticated session details.</p>
+        <div className="welcome-hero">
+          <div className="hero-text">
+            <h1>Welcome, <span className="logo-accent">{user.username}</span>.</h1>
+            <p>Your session is active and secure. Here is your profile overview.</p>
+          </div>
         </div>
 
-        <div className="user-details-grid">
-          <div className="detail-card glass-panel">
-            <div className="detail-icon">👤</div>
+        <div className="dashboard-grid">
+          <div className="detail-card">
+            <div className="detail-icon" style={{ width: '24px', height: '24px', color: 'var(--accent)' }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
             <div className="detail-info">
               <label>Username</label>
               <p>@{user.username}</p>
             </div>
           </div>
 
-          <div className="detail-card glass-panel">
-            <div className="detail-icon">📧</div>
+          <div className="detail-card">
+            <div className="detail-icon" style={{ width: '24px', height: '24px', color: 'var(--accent)' }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
             <div className="detail-info">
               <label>Email Address</label>
               <p>{user.email}</p>
             </div>
           </div>
 
-          <div className="detail-card glass-panel">
-            <div className="detail-icon">🛡️</div>
+          <div className="detail-card">
+            <div className="detail-icon" style={{ width: '24px', height: '24px', color: 'var(--accent)' }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
             <div className="detail-info">
               <label>Account Role</label>
-              <p className="role-badge">{user.role}</p>
+              <p style={{ marginTop: '0.4rem' }}><span className="role-badge">{user.role || 'USER'}</span></p>
+            </div>
+          </div>
+
+          <div className="detail-card">
+            <div className="detail-icon" style={{ width: '24px', height: '24px', color: 'var(--accent)' }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <div className="detail-info">
+              <label>Member Since</label>
+              <p>{new Date(user.createdAt || Date.now()).toLocaleDateString()}</p>
             </div>
           </div>
         </div>

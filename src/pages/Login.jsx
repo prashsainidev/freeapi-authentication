@@ -8,7 +8,7 @@ const Login = () => {
   const { login, user } = useAuth();
   
   const [formData, setFormData] = useState({
-    username: '',
+    identifier: '',
     password: '',
   });
   const [loading, setLoading] = useState(false);
@@ -36,7 +36,7 @@ const Login = () => {
     setSuccessMessage('');
 
     try {
-      await login(formData.username, formData.password);
+      await login(formData.identifier, formData.password);
       navigate('/profile');
     } catch (err) {
       setError(err.message || 'Invalid username or password.');
@@ -47,55 +47,88 @@ const Login = () => {
 
   return (
     <div className="auth-container">
-      <div className="auth-card glass-panel">
-        <div className="auth-header">
+      <div className="split-layout">
+        
+        {/* Left Side: Info Panel */}
+        <div className="info-panel">
           <div className="brand-logo">
-            <div className="logo-dot"></div>
-            <span>AURA AUTH</span>
+            <span className="logo-accent">AURA</span> AUTH
           </div>
-          <h1>Welcome Back</h1>
-          <p>Sign in to access your dashboard</p>
+          <h2>Welcome Back</h2>
+          <p>Resume your session and access your secure dashboard.</p>
+          
+          <div className="feature-list">
+            <div className="feature-item">
+              <span className="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0110 0v4"></path>
+                </svg>
+              </span>
+              <div className="feature-text">
+                <h3>Secure Session</h3>
+                <p>Your session is protected with robust JWT authentication.</p>
+              </div>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 20V10M18 20V4M6 20v-4"></path>
+                </svg>
+              </span>
+              <div className="feature-text">
+                <h3>Real-time Data</h3>
+                <p>Access your user analytics seamlessly.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {successMessage && <div className="alert success">{successMessage}</div>}
-        {error && <div className="alert error">{error}</div>}
-
-        <form onSubmit={handleSubmit} className="auth-form">
-          <div className="input-group">
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              placeholder="e.g. doejohn"
-              required
-            />
-            <label htmlFor="username">Username</label>
+        {/* Right Side: Form Panel */}
+        <div className="form-panel">
+          <div className="auth-header">
+            <h1>Sign In</h1>
+            <p>Enter your credentials to continue</p>
           </div>
 
-          <div className="input-group">
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="test@123"
-              required
-            />
-            <label htmlFor="password">Password</label>
+          {successMessage && <div className="alert success">{successMessage}</div>}
+          {error && <div className="alert error">{error}</div>}
+
+          <form onSubmit={handleSubmit} className="auth-form">
+            <div className="input-group">
+              <input
+                type="text"
+                id="identifier"
+                name="identifier"
+                value={formData.identifier}
+                onChange={handleChange}
+                placeholder="Email or Username"
+                required
+              />
+              <label htmlFor="identifier">Email or Username</label>
+            </div>
+
+            <div className="input-group">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="test@123"
+                required
+              />
+              <label htmlFor="password">Password</label>
+            </div>
+
+            <button type="submit" className="primary-btn" disabled={loading}>
+              {loading ? <div className="spinner-small"></div> : 'Sign In'}
+            </button>
+          </form>
+
+          <div className="auth-footer">
+            <p>Don't have an account? <Link to="/register" className="accent-link">Create one</Link></p>
           </div>
-
-          <button type="submit" className="primary-btn" disabled={loading}>
-            {loading ? <span className="spinner-small"></span> : 'Sign In'}
-          </button>
-        </form>
-
-        <div className="auth-footer">
-          <p>
-            Don't have an account? <Link to="/register" className="accent-link">Register</Link>
-          </p>
         </div>
       </div>
     </div>
